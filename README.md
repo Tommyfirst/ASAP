@@ -168,11 +168,31 @@ pip install -e isaac_utils
 
 # Motion Tracking Training
 
+(isaacgym)
 Train a phase-based motion tracking policy to imitate Cristiano Ronaldo's signature Siuuu move
 
 ```bash
 python humanoidverse/train_agent.py \
 +simulator=isaacgym \
++exp=motion_tracking \
++domain_rand=NO_domain_rand \
++rewards=motion_tracking/reward_motion_tracking_dm_2real \
++robot=g1/g1_29dof_anneal_23dof \
++terrain=terrain_locomotion_plane \
++obs=motion_tracking/deepmimic_a2c_nolinvel_LARGEnoise_history \
+num_envs=4096 \
+project_name=MotionTracking \
+experiment_name=MotionTracking_CR7 \
+robot.motion.motion_file="humanoidverse/data/motions/g1_29dof_anneal_23dof/TairanTestbed/singles/0-TairanTestbed_TairanTestbed_CR7_video_CR7_level1_filter_amass.pkl" \
+rewards.reward_penalty_curriculum=True \
+env.config.resample_motion_when_training=False
+```
+
+(genesis)
+Train a phase-based motion tracking policy to imitate Cristiano Ronaldo's signature Siuuu move
+```
+python humanoidverse/train_agent.py \
++simulator=genesis \
 +exp=motion_tracking \
 +domain_rand=NO_domain_rand \
 +rewards=motion_tracking/reward_motion_tracking_dm_2real \
